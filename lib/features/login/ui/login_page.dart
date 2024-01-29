@@ -5,8 +5,12 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Login Page'),
+    return const Column(
+      children: [
+        Text('Login Page'),
+        Text('Sign In'),
+        Text('Sign Out'),
+      ],
     );
   }
 }
