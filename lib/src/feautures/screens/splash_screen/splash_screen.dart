@@ -1,4 +1,4 @@
-import 'package:challenge_master/presentation/pages/nav_pages/home/home_page.dart';
+import 'package:challenge_master/src/feautures/screens/nav_pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
           Container(),
           Center(
             child: Image.asset(
-              'lib/assets/images/logo.png',
+              'assets/images/logo.png',
               width: 220,
             ),
           ),
