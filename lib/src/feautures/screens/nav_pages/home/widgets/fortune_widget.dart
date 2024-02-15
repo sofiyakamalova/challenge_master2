@@ -8,41 +8,46 @@ class FortuneWidget extends GetView<FortuneController> {
   @override
   Widget build(BuildContext context) {
     var c = Get.put(FortuneController());
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: SizedBox(
-        height: 330,
-        child: FortuneWheel(
-          onAnimationEnd: () {
-            c.showDialog();
-          },
-          selected: c.streamController.stream,
-          animateFirst: false,
-          indicators: const [
-            FortuneIndicator(
-                child: Icon(
-              Icons.circle,
-              color: Colors.white,
-              size: 60,
-            )),
-            FortuneIndicator(
-              alignment: Alignment.centerRight,
-              child: TriangleIndicator(
-                color: Colors.deepOrangeAccent,
-                width: 50,
-                height: 50,
+    return SizedBox(
+      height: 250,
+      child: FortuneWheel(
+        onAnimationEnd: () {
+          c.showDialog();
+        },
+        physics: CircularPanPhysics(
+          duration: const Duration(seconds: 3),
+          curve: Curves.easeOutExpo,
+        ),
+        selected: c.streamController.stream,
+        animateFirst: false,
+        indicators: [
+          FortuneIndicator(
+            child: Container(
+              width: 30,
+              height: 30,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.deepOrangeAccent, Colors.yellow],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                shape: BoxShape.circle,
               ),
             ),
-          ],
-          physics: CircularPanPhysics(
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeOutExpo,
           ),
-          onFling: () {
-            c.spinthewheel();
-          },
-          items: [...c.items],
-        ),
+          const FortuneIndicator(
+            alignment: Alignment.centerRight,
+            child: TriangleIndicator(
+              color: Colors.deepOrange,
+              width: 30,
+              height: 30,
+            ),
+          ),
+        ],
+        onFling: () {
+          c.spinthewheel();
+        },
+        items: [...c.items],
       ),
     );
   }
@@ -53,34 +58,29 @@ class FortuneController extends GetxController {
 
   final List<FortuneItem> items = [
     FortuneItem(
-      child: Text('Item 1'),
-      style: FortuneItemStyle(
-        color: Colors.red,
-        borderColor: Colors.transparent,
-        textStyle: TextStyle(color: Colors.transparent),
-      ),
-    ),
-    FortuneItem(
-      child: Text('Item 2'),
-      style: FortuneItemStyle(
-        color: Colors.blue,
-        borderColor: Colors.transparent,
-        textStyle: TextStyle(color: Colors.transparent),
-      ),
-    ),
-    FortuneItem(
       child: Text('Item 2'),
       style: FortuneItemStyle(
         color: Colors.pink,
-        borderColor: Colors.transparent,
+        borderColor: Colors.amber,
+        borderWidth: 7,
         textStyle: TextStyle(color: Colors.transparent),
       ),
     ),
     FortuneItem(
       child: Text('Item 2'),
       style: FortuneItemStyle(
-        color: Colors.yellow,
-        borderColor: Colors.transparent,
+        color: Colors.blueAccent,
+        borderColor: Colors.amber,
+        borderWidth: 7,
+        textStyle: TextStyle(color: Colors.transparent),
+      ),
+    ),
+    FortuneItem(
+      child: Text('Item 2'),
+      style: FortuneItemStyle(
+        color: Colors.blue.shade100,
+        borderColor: Colors.amber,
+        borderWidth: 7,
         textStyle: TextStyle(color: Colors.transparent),
       ),
     ),
@@ -88,7 +88,26 @@ class FortuneController extends GetxController {
       child: Text('Item 2'),
       style: FortuneItemStyle(
         color: Colors.green,
-        borderColor: Colors.transparent,
+        borderColor: Colors.amber,
+        borderWidth: 7,
+        textStyle: TextStyle(color: Colors.transparent),
+      ),
+    ),
+    FortuneItem(
+      child: Text('Item 2'),
+      style: FortuneItemStyle(
+        color: Colors.cyan,
+        borderColor: Colors.amber,
+        borderWidth: 7,
+        textStyle: TextStyle(color: Colors.transparent),
+      ),
+    ),
+    FortuneItem(
+      child: Text('Item 2'),
+      style: FortuneItemStyle(
+        color: Colors.deepOrangeAccent,
+        borderColor: Colors.amber,
+        borderWidth: 7,
         textStyle: TextStyle(color: Colors.transparent),
       ),
     ),

@@ -1,4 +1,4 @@
-import 'package:challenge_master/src/feautures/screens/nav_pages/home/home_page.dart';
+import 'package:challenge_master/src/feautures/screens/nav_pages/home/ui/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
