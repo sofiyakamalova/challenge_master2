@@ -22,7 +22,7 @@ class _RoundedButtonState extends State<RoundedButton> {
           });
         },
         style: ElevatedButton.styleFrom(
-          primary: _isJoined ? AppColor.primaryColor : Colors.white24,
+          backgroundColor: _isJoined ? AppColor.primaryColor : Colors.white24,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),

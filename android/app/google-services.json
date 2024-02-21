@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "359386672702",
+    "project_id": "challenger-app-c941b",
+    "storage_bucket": "challenger-app-c941b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359386672702:android:556408272e26405af06b6f",
+        "android_client_info": {
+          "package_name": "kz.challengemaster.jihc.challenge_master"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVVcxxpl0RoSlok-ysgxbTOdzlxwGC1FI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
