@@ -2,7 +2,7 @@ import 'package:challenge_master/src/core/common_widgets/common_title.dart';
 import 'package:challenge_master/src/core/common_widgets/rounded_button.dart';
 import 'package:challenge_master/src/core/constants/app_color.dart';
 import 'package:challenge_master/src/feautures/screens/nav_pages/home/challenge_model/challenge_model.dart';
-import 'package:challenge_master/src/feautures/screens/nav_pages/home/widgets/fortune_widget.dart';
+import 'package:challenge_master/src/feautures/screens/nav_pages/home/widgets/fortune/spinning_wheel.dart';
 import 'package:challenge_master/src/feautures/screens/nav_pages/home/widgets/search_widget.dart';
 import 'package:challenge_master/src/services/auth_service/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: TextAlign.center,
                 size: 25,
               ),
-              const FortuneWidget(),
+              const SpinningWheel(),
               const SizedBox(height: 10.0),
               Expanded(
                 child: FutureBuilder<List<ChallengeModel>>(
