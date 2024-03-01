@@ -18,6 +18,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String dropDownValue = 'sport';
+  late LibraryProvider libProvider; // Declare a LibraryProvider variable
+
   //sign out function
   void signOut() {
     final authService = Provider.of<AuthService>(context, listen: false);
@@ -121,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                     borderSide: BorderSide(color: Colors.transparent, width: 0),
                   ),
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 ),
                 value: dropDownValue,
                 icon: const Icon(Icons.menu),
@@ -200,8 +202,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final libProvider = Provider.of<LibraryProvider>(context, listen: false);
-    libProvider.init();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.whiteColor,
@@ -243,6 +243,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SpinningWheel(),
               const SizedBox(height: 10.0),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
@@ -250,94 +251,69 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     const CommonTitle(
                         title: 'Challenges', textColor: AppColor.mainTextColor),
-                    ChoiceChip(
-                      backgroundColor: AppColor.whiteColor,
-                      label: const Icon(Icons.filter_alt_sharp,
-                          color: AppColor.primaryColor),
-                      selected: false,
-                      onSelected: (value) {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Wrap(
-                                children: [
-                                  InkWell(
-                                    child: const ListTile(
-                                      leading: Icon(Icons.share),
-                                      title: Text('all'),
-                                    ),
-                                    onTap: () {
-                                      libProvider.runFilter('');
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  InkWell(
-                                    child: const ListTile(
-                                      leading: Icon(Icons.share),
-                                      title: Text('sport'),
-                                    ),
-                                    onTap: () {
-                                      libProvider.runFilter('sport');
-
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  InkWell(
-                                    child: const ListTile(
-                                      leading: Icon(Icons.share),
-                                      title: Text('science'),
-                                    ),
-                                    onTap: () {
-                                      libProvider.runFilter('science');
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  InkWell(
-                                    child: const ListTile(
-                                      leading: Icon(Icons.share),
-                                      title: Text('music'),
-                                    ),
-                                    onTap: () {
-                                      libProvider.runFilter('music');
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ],
-                              );
-                            });
+                    DropdownButton<String>(
+                      value: dropDownValue,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropDownValue = newValue!;
+                        });
                       },
+                      items: [
+                        "sport",
+                        "dance",
+                        "music",
+                        "science",
+                        "social",
+                        "reading"
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
-                    // Consumer<LibraryProvider>(builder: (context, data, child) {
-                    //   return Expanded(
-                    //     child: data.books.isNotEmpty
-                    //         ? BookList(bookList: data.books)
-                    //         : const Text(
-                    //       'No results found',
-                    //       style: TextStyle(fontSize: 24),
-                    //     ),
-                    //   );
-                    // }),
                   ],
                 ),
               ),
-              SizedBox(height: 10),
-              Divider(height: 1, color: AppColor.primaryColor),
+              const Divider(height: 1, color: AppColor.primaryColor),
               Expanded(
                 child: ListView.builder(
                     itemCount: _items.length,
                     itemBuilder: (_, index) {
                       final currentItem = _items[index];
                       return Card(
-                        color: Colors.blue,
+                        color: AppColor.secondMainColor,
                         margin: EdgeInsets.all(16.0),
                         elevation: 3,
                         child: ListTile(
-                          title: Text(currentItem['title'].toString()),
+                          title: Text(
+                            currentItem['title'].toString(),
+                            style: const TextStyle(
+                              color: AppColor.whiteColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(currentItem['subtitle'].toString()),
-                              Text("Category: ${currentItem['category']}"),
+                              Text(
+                                currentItem['subtitle'].toString(),
+                                style: TextStyle(
+                                  color: AppColor.whiteColor,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 5),
+                                decoration: BoxDecoration(
+                                  color: AppColor.whiteColor,
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Colors.grey),
+                                ),
+                                child: Text("${currentItem['category']}"),
+                              ),
                             ],
                           ),
                           trailing: Row(
@@ -345,13 +321,15 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               //Editbutton
                               IconButton(
-                                  icon: const Icon(Icons.edit),
+                                  icon: const Icon(Icons.edit,
+                                      color: AppColor.whiteColor),
                                   onPressed: () =>
                                       _showForm(context, currentItem['key'])),
 
                               // Delete button
                               IconButton(
-                                  icon: const Icon(Icons.delete),
+                                  icon: const Icon(Icons.delete,
+                                      color: AppColor.whiteColor),
                                   onPressed: () =>
                                       _deleteItem(currentItem['key'])),
                             ],
