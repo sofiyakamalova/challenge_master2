@@ -3,11 +3,18 @@ import 'package:challenge_master/src/feautures/screens/splash_screen/splash_scre
 import 'package:challenge_master/src/services/auth_service/auth_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  //hive initalization
+  await Hive.initFlutter();
+  // open the box
+  var box = await Hive.openBox('my_challenges');
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => AuthService(),

@@ -1,5 +1,5 @@
 import 'package:challenge_master/src/core/constants/app_color.dart';
-import 'package:challenge_master/src/feautures/screens/nav_pages/home/ui/home_page.dart';
+import 'package:challenge_master/src/feautures/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +10,7 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: Obx(
         () => NavigationBar(
           height: 80,

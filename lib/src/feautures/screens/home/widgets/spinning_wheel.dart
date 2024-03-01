@@ -23,7 +23,7 @@ class WheelFortuneWidget extends StatelessWidget {
     return AnimatedBuilder(
       animation: animationController,
       child: const Image(
-        width: 350,
+        width: 300,
         image: AssetImage('assets/images/wheel.png'),
       ),
       builder: (context, child) => Transform.rotate(
@@ -99,7 +99,7 @@ class _SpinningWheelState extends State with SingleTickerProviderStateMixin {
     if (winner == 1) return 'You should play guitar 1 hour!!';
     if (winner == 2) return 'You should solve tasks from codeforce';
     if (winner == 3)
-      return 'You should learn by heart the all poems of Pushkin ';
+      return 'You should learn by heart the all poems of Pushkin';
     return 'Today, you may relax :)';
   }
 

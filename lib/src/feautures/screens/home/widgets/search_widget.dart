@@ -5,7 +5,7 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 55,
       child: TextField(
         decoration: InputDecoration(

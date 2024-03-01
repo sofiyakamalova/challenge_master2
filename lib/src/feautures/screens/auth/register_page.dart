@@ -60,8 +60,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   const CommonTitle(
                     title: "Let's create a new account !",
                     size: 35,
+                    alignment: TextAlign.center,
                   ),
-                  const SizedBox(height: 25),
                   const SizedBox(height: 25),
                   BuildTextField(
                     controller: emailController,
@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Confirm password',
                     obscureText: false,
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 40),
                   BuildButton(onTap: signUp, text: 'SIGN UP'),
                   const SizedBox(height: 25),
                   Row(

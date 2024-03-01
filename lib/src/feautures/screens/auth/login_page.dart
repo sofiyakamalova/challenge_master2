@@ -43,53 +43,51 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const CommonTitle(
-                    title: 'Welcome user !',
-                    size: 35,
-                  ),
-                  const SizedBox(height: 25),
-                  Image.asset(
-                    'assets/images/welcome.png',
-                    width: 180,
-                    height: 180,
-                  ),
-                  const SizedBox(height: 25),
-                  BuildTextField(
-                    controller: emailController,
-                    hintText: 'Your email',
-                    obscureText: false,
-                  ),
-                  const SizedBox(height: 15),
-                  BuildTextField(
-                    controller: passwordController,
-                    hintText: 'Your password',
-                    obscureText: false,
-                  ),
-                  const SizedBox(height: 25),
-                  BuildButton(onTap: signIn, text: 'SIGN IN'),
-                  const SizedBox(height: 25),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text('Not a member? '),
-                      GestureDetector(
-                        onTap: widget.onTap,
-                        child: const Text(
-                          'Register now',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: AppColor.secondMainColor),
-                        ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(height: 100),
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: 180,
+                  height: 180,
+                ),
+                const CommonTitle(
+                  title: 'Welcome user !',
+                  size: 35,
+                ),
+                const SizedBox(height: 40),
+                BuildTextField(
+                  controller: emailController,
+                  hintText: 'Your email',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 15),
+                BuildTextField(
+                  controller: passwordController,
+                  hintText: 'Your password',
+                  obscureText: false,
+                ),
+                const SizedBox(height: 40),
+                BuildButton(onTap: signIn, text: 'SIGN IN'),
+                const SizedBox(height: 25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('Not a member? '),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: const Text(
+                        'Register now',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.secondMainColor),
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ),
